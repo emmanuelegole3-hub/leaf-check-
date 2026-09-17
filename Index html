@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaf Check</title>
+</head>
+
+<body>
+
+    <h1>🌿 Leaf Check</h1>
+
+    <p>Your crop health assistant.</p>
+<h2>Select your crop</h2>
+
+<select id="cropSelect">
+    <option value="">Choose a crop</option>
+    <option value="tomato">Tomato</option>
+    <option value="maize">Maize</option>
+    <option value="cassava">Cassava</option>
+    <option value="pepper">Pepper</option>
+    <option value="plantain">Plantain</option>
+</select>
+  <br><br>
+
+<button id="diagnoseBtn">Start Diagnosis</button>
+<div id="appArea"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>

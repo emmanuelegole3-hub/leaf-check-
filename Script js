@@ -1,0 +1,840 @@
+  const cropSelect = document.getElementById("cropSelect");
+const diagnoseBtn = document.getElementById("diagnoseBtn");
+
+diagnoseBtn.addEventListener("click", function() {
+    const selectedCrop = cropSelect.value;
+    const appArea = document.getElementById("appArea");
+
+    if (selectedCrop === "") {
+        appArea.innerHTML = `
+            <p>Please choose a crop first.</p>
+        `;
+        return;
+    }
+
+    appArea.innerHTML = `
+        <h2>Let's check your ${selectedCrop}.</h2>
+
+    ${selectedCrop === "tomato"
+    ? `
+        <p>What part of the plant is showing the problem?</p>
+
+        <button id="leavesBtn">Leaves</button>
+        <button id="fruitBtn">Fruit</button>
+        <button id="stemBtn">Stem</button>
+        <button id="wholePlantBtn">Whole plant</button>
+        <button id="notSureBtn">Not sure</button>
+    `
+    : selectedCrop === "maize"
+    ? `
+        <p>What part of the maize plant is showing the problem?</p>
+
+        <button id="maizeLeavesBtn">Leaves</button>
+        <button id="maizeEarBtn">Ear</button>
+        <button id="maizeStemBtn">Stem</button>
+        <button id="maizeWholePlantBtn">Whole plant</button>
+        <button id="maizeNotSureBtn">Not sure</button>
+    `
+    : selectedCrop === "cassava"
+    ? `
+        <p>What part of the cassava plant is showing the problem?</p>
+
+        <button id="cassavaLeavesBtn">Leaves</button>
+        <button id="cassavaStemBtn">Stem</button>
+        <button id="cassavaRootsBtn">Roots</button>
+        <button id="cassavaWholePlantBtn">Whole plant</button>
+        <button id="cassavaNotSureBtn">Not sure</button>
+    `
+    : `
+        <p>Are you seeing yellowing on the leaves?</p>
+
+        <button id="yellowYes">Yes</button>
+        <button id="yellowNo">No</button>
+    `
+    }
+    `;
+    // CASSAVA → LEAVES
+    if (selectedCrop === "cassava") {
+
+        document.getElementById("cassavaLeavesBtn").addEventListener("click", function() {
+
+            appArea.innerHTML = `
+                <h2>Cassava - Leaves</h2>
+
+                <p>What problem are you seeing on the cassava leaves?</p>
+
+                <button>Curling or distortion</button>
+                <button>Yellowing</button>
+                <button>Spots or lesions</button>
+                <button>Holes or chewing</button>
+                <button>Wilting</button>
+                <button>Not sure</button>
+            `;
+
+        });
+    }
+    // TOMATO → LEAVES
+    if (selectedCrop === "tomato") {
+
+        document.getElementById("leavesBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaves</h2>
+
+        <p>What problem are you seeing on the leaves?</p>
+
+        <button id="tomatoLeafSpotsBtn">Spots</button>
+        <button id="tomatoLeafYellowBtn">Yellowing or discoloration</button>
+        <button id="tomatoLeafCurlBtn">Curling or distortion</button>
+        <button id="tomatoLeafHolesBtn">Holes or chewing</button>
+        <button id="tomatoLeafWiltBtn">Wilting</button>
+        <button>Not sure</button>
+    `;
+document.getElementById("tomatoLeafSpotsBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaf Spots</h2>
+
+        <p>What do the spots look like?</p>
+
+        <button>Small dark spots</button>
+        <button>Large brown or dark spots</button>
+        <button>Spots with yellowing around them</button>
+        <button>Spots with a target-like pattern</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoLeafYellowBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaf Yellowing or Discoloration</h2>
+
+        <p>How is the discoloration appearing?</p>
+
+        <button>Whole leaf is yellow</button>
+        <button>Yellowing between the veins</button>
+        <button>Yellowing along the edges</button>
+        <button>Yellow patches or blotches</button>
+        <button>Leaves turning pale or unusual color</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoLeafCurlBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaf Curling or Distortion</h2>
+
+        <p>What kind of curling or distortion are you seeing?</p>
+
+        <button>Leaves curling upward</button>
+        <button>Leaves curling downward</button>
+        <button>Leaves twisting or distorted</button>
+        <button>New leaves are affected</button>
+        <button>Leaves are small or deformed</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoLeafHolesBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaf Holes or Chewing</h2>
+
+        <p>What kind of damage are you seeing?</p>
+
+        <button>Small holes</button>
+        <button>Large holes</button>
+        <button>Edges of leaves are being eaten</button>
+        <button>Large areas of the leaf are missing</button>
+        <button>Chewed or ragged leaf edges</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoLeafWiltBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Leaf Wilting</h2>
+
+        <p>How is the plant wilting?</p>
+
+        <button>Leaves drooping</button>
+        <button>Leaves drying out</button>
+        <button>Leaves wilt during the day</button>
+        <button>Whole plant is wilting</button>
+        <button>Wilting despite enough water</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+      
+
+    document.getElementById("fruitBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Fruit</h2>
+
+        <p>What problem are you seeing on the fruit?</p>
+
+        <button id="tomatoFruitSpotsBtn">Spots</button>
+        <button id="tomatoFruitRotBtn">Rotting</button>
+        <button id="tomatoFruitCracksBtn">Cracks</button>
+        <button id="tomatoFruitDiscolorBtn">Discoloration</button>
+        <button id="tomatoFruitMisshapenBtn">Misshapen or distorted fruit</button>
+        <button>Not sure</button>
+    `;
+document.getElementById("tomatoFruitSpotsBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Fruit Spots</h2>
+
+        <p>What do the spots look like?</p>
+
+        <button>Small dark spots</button>
+        <button>Large sunken spots</button>
+        <button>Spots with yellow or pale areas</button>
+        <button>Spots that are spreading or enlarging</button>
+        <button>Not sure</button>
+    `;
+
+});
+      document.getElementById("tomatoFruitRotBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Fruit Rotting</h2>
+
+        <p>How is the fruit rotting?</p>
+
+        <button>Soft or watery areas</button>
+        <button>Dark or discolored areas</button>
+        <button>Rot starting at the bottom of the fruit</button>
+        <button>Rot starting around a damaged area</button>
+        <button>Fuzzy or moldy growth</button>
+        <button>Not sure</button>
+    `;
+
+});
+      document.getElementById("tomatoFruitCracksBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Fruit Cracks</h2>
+
+        <p>What kind of cracking are you seeing?</p>
+
+        <button>Cracks around the top of the fruit</button>
+        <button>Cracks radiating from the stem</button>
+        <button>Cracks around the sides of the fruit</button>
+        <button>Deep cracks splitting the fruit</button>
+        <button>Small surface cracks</button>
+        <button>Not sure</button>
+    `;
+
+});
+      document.getElementById("tomatoFruitDiscolorBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Fruit Discoloration</h2>
+
+        <p>How is the fruit changing color?</p>
+
+        <button>Fruit is turning yellow</button>
+        <button>Dark or black areas</button>
+        <button>Pale or bleached areas</button>
+        <button>Uneven or patchy color</button>
+        <button>Unusual color inside the fruit</button>
+        <button>Not sure</button>
+    `;
+
+});
+      document.getElementById("tomatoFruitMisshapenBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Misshapen or Distorted Fruit</h2>
+
+        <p>How is the fruit developing?</p>
+
+        <button>Fruit is unusually small</button>
+        <button>Fruit is lopsided or uneven</button>
+        <button>Fruit has deep indentations</button>
+        <button>Fruit is swollen or unusually shaped</button>
+        <button>Fruit has an irregular surface</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+
+document.getElementById("stemBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Stem</h2>
+
+        <p>What problem are you seeing on the stem?</p>
+
+        <button id="tomatoStemSpotsBtn">Dark spots or lesions</button>
+        <button id="tomatoStemRotBtn">Rotting</button>
+        <button id="tomatoStemDamageBtn">Damage or holes</button>
+        <button id="tomatoStemWeakBtn">Stem is weak or breaking</button>
+        <button>Not sure</button>
+    `;
+document.getElementById("tomatoStemSpotsBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Stem Dark Spots or Lesions</h2>
+
+        <p>What do the spots or lesions look like?</p>
+
+        <button>Small dark spots</button>
+        <button>Large dark lesions</button>
+        <button>Long marks or streaks</button>
+        <button>Darkening around a damaged area</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("tomatoStemRotBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Stem Rotting</h2>
+
+        <p>How is the stem rotting?</p>
+
+        <button>Soft or mushy stem</button>
+        <button>Dark or discolored area</button>
+        <button>Wet or water-soaked area</button>
+        <button>Rot starting near the base</button>
+        <button>Bad smell or visible decay</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("tomatoStemDamageBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Stem Damage or Holes</h2>
+
+        <p>What kind of damage are you seeing?</p>
+
+        <button>Small holes in the stem</button>
+        <button>Large holes or tunnels</button>
+        <button>Chewed or damaged stem</button>
+        <button>Stem split or cracked</button>
+        <button>Stem damaged near the base</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("tomatoStemWeakBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Weak or Breaking Stem</h2>
+
+        <p>What is happening to the stem?</p>
+
+        <button>Stem bends easily</button>
+        <button>Stem breaks near the base</button>
+        <button>Stem breaks higher up</button>
+        <button>Stem is split or cracked</button>
+        <button>Whole plant is falling over</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+
+        document.getElementById("wholePlantBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Whole Plant</h2>
+
+        <p>What is the main problem with the plant?</p>
+
+        <button id="tomatoWholeWiltBtn">Wilting</button>
+        <button id="tomatoWholeStuntedBtn">Stunted growth</button>
+        <button id="tomatoWholeYellowBtn">Overall yellowing</button>
+        <button id="tomatoWholeCollapseBtn">Falling or collapsing</button>
+        <button id="tomatoWholePoorGrowthBtn">Poor overall growth</button>
+        <button>Not sure</button>
+    `;
+document.getElementById("tomatoWholeWiltBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Whole Plant Wilting</h2>
+
+        <p>How is the plant wilting?</p>
+
+        <button>Leaves drooping</button>
+        <button>Leaves drying out</button>
+        <button>Plant wilts during the day</button>
+        <button>Whole plant is suddenly wilting</button>
+        <button>Wilting despite enough water</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoWholeStuntedBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Stunted Growth</h2>
+
+        <p>How is the plant's growth affected?</p>
+
+        <button>Plant is much shorter than expected</button>
+        <button>Leaves are smaller than normal</button>
+        <button>Growth is unusually slow</button>
+        <button>Some plants are smaller than others</button>
+        <button>Plant has stopped growing</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoWholeYellowBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Overall Yellowing</h2>
+
+        <p>How is the yellowing appearing?</p>
+
+        <button>Most leaves are yellow</button>
+        <button>Older leaves turn yellow first</button>
+        <button>Newer leaves turn yellow first</button>
+        <button>Yellowing is uneven or patchy</button>
+        <button>Leaves are pale rather than bright green</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoWholeCollapseBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Falling or Collapsing</h2>
+
+        <p>How is the plant falling or collapsing?</p>
+
+        <button>Plant is falling at the base</button>
+        <button>Stem bends before the plant falls</button>
+        <button>Plant suddenly collapses</button>
+        <button>Several plants are falling together</button>
+        <button>Plant falls despite appearing healthy</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("tomatoWholePoorGrowthBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Poor Overall Growth</h2>
+
+        <p>What is the main growth problem?</p>
+
+        <button>Plants are smaller than expected</button>
+        <button>Fewer leaves than normal</button>
+        <button>Growth is uneven across the plants</button>
+        <button>Growth has stopped or slowed</button>
+        <button>Plants look weak or unhealthy overall</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+
+       // TOMATO → NOT SURE
+document.getElementById("notSureBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Tomato - Not Sure</h2>
+
+        <p>No problem. Which part of the plant looks abnormal?</p>
+
+        <button>Leaves look abnormal</button>
+        <button>Fruit looks abnormal</button>
+        <button>Stem looks abnormal</button>
+        <button>Whole plant looks unhealthy</button>
+        <button>I'm not sure what I'm seeing</button>
+    `;
+
+});
+        }
+
+    // MAIZE → DIFFERENT PLANT PARTS
+    else if (selectedCrop === "maize") {
+
+    // MAIZE → LEAVES
+document.getElementById("maizeLeavesBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Leaves</h2>
+
+        <p>What problem are you seeing on the leaves?</p>
+
+        <button id="maizeLeafSpotsBtn">Spots</button>
+        <button id="maizeLeafYellowBtn">Yellowing</button>
+        <button id="maizeLeafCurlBtn">Curling or distortion</button>
+        <button id="maizeLeafHolesBtn">Holes or chewing</button>
+        <button id="maizeLeafWiltBtn">Wilting</button>
+    `;
+
+    document.getElementById("maizeLeafSpotsBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Leaf Spots</h2>
+
+            <p>What do the spots look like?</p>
+
+            <button>Small spots</button>
+            <button>Large spots</button>
+            <button>Long or narrow spots</button>
+            <button>Spots with yellowing</button>
+            <button>Not sure</button>
+        `;
+
+    });
+    document.getElementById("maizeLeafYellowBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Leaf Yellowing</h2>
+
+            <p>How is the yellowing appearing?</p>
+
+            <button>Whole leaf</button>
+            <button>Along the edges</button>
+            <button>Between the veins</button>
+            <button>Yellow patches</button>
+            <button>Not sure</button>
+        `;
+
+    });
+
+    document.getElementById("maizeLeafCurlBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Leaf Curling or Distortion</h2>
+
+            <p>What are you noticing?</p>
+
+            <button>Leaves curling</button>
+            <button>Leaves twisting</button>
+            <button>Leaves becoming distorted</button>
+            <button>New leaves affected</button>
+            <button>Not sure</button>
+        `;
+
+    });
+
+    document.getElementById("maizeLeafHolesBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Leaf Holes or Chewing</h2>
+
+            <p>What does the damage look like?</p>
+
+            <button>Small holes</button>
+            <button>Large holes</button>
+            <button>Edges being eaten</button>
+            <button>Long damaged areas</button>
+            <button>Not sure</button>
+        `;
+
+    });
+
+    document.getElementById("maizeLeafWiltBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Leaf Wilting</h2>
+
+            <p>How is the plant wilting?</p>
+
+            <button>Leaves drooping</button>
+            <button>Leaves drying</button>
+            <button>Whole plant wilting</button>
+            <button>Wilting despite enough water</button>
+            <button>Not sure</button>
+        `;
+
+    });
+});
+
+        // MAIZE → EAR
+document.getElementById("maizeEarBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Ear</h2>
+
+        <p>What problem are you seeing on the ear?</p>
+
+        <button id="maizeEarDiscolorBtn">Discoloration</button>
+        <button id="maizeEarRotBtn">Rotting</button>
+        <button id="maizeEarDamageBtn">Insect damage</button>
+        <button id="maizeEarKernelBtn">Poor or missing kernels</button>
+    `;
+
+    document.getElementById("maizeEarDiscolorBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Ear Discoloration</h2>
+
+            <p>Where is the discoloration appearing?</p>
+
+            <button>On the kernels</button>
+            <button>On the husk</button>
+            <button>On the whole ear</button>
+            <button>Dark or unusual patches</button>
+            <button>Not sure</button>
+        `;
+
+    });
+document.getElementById("maizeEarRotBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Ear Rotting</h2>
+
+        <p>What does the rotting look like?</p>
+
+        <button>Soft or watery</button>
+        <button>Dark or discolored</button>
+        <button>Moldy growth</button>
+        <button>Rot starting at the tip</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("maizeEarDamageBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Ear Insect Damage</h2>
+
+        <p>What kind of damage are you seeing?</p>
+
+        <button>Holes in the kernels</button>
+        <button>Insects on the ear</button>
+        <button>Damaged or missing kernels</button>
+        <button>Silk or husk damage</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("maizeEarKernelBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Poor or Missing Kernels</h2>
+
+        <p>What are you noticing?</p>
+
+        <button>Small or poorly developed kernels</button>
+        <button>Missing kernels</button>
+         <button>Empty spaces on the ear</button>
+        <button>Uneven kernel development</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+        // MAIZE → STEM
+document.getElementById("maizeStemBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Stem</h2>
+
+        <p>What problem are you seeing on the stem?</p>
+
+        <button id="maizeStemSpotsBtn">Dark spots or lesions</button>
+        <button id="maizeStemBorerBtn">Borer or insect damage</button>
+        <button id="maizeStemRotBtn">Rotting</button>
+        <button id="maizeStemBreakBtn">Breaking or falling</button>
+    `;
+
+document.getElementById("maizeStemSpotsBtn").addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Maize - Stem Spots or Lesions</h2>
+
+            <p>What do the marks on the stem look like?</p>
+
+            <button>Small dark spots</button>
+            <button>Large lesions</button>
+            <button>Long marks or streaks</button>
+            <button>Darkening around a damaged area</button>
+            <button>Not sure</button>
+        `;
+
+    });
+document.getElementById("maizeStemBorerBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Stem Insect Damage</h2>
+
+        <p>What kind of insect damage are you seeing?</p>
+
+<button>Small holes</button>
+        <button>Large holes or tunnels</button>
+        <button>Sawdust-like material</button>
+        <button>Stem weakened or broken</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("maizeStemRotBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Stem Rotting</h2>
+
+        <p>What does the rotting look like?</p>
+
+        <button>Soft or mushy stem</button>
+        <button>Dark or discolored area</button>
+        <button>Wet or water-soaked area</button>
+        <button>Bad smell or decay</button>
+        <button>Not sure</button>
+    `;
+
+});
+  document.getElementById("maizeStemBreakBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Stem Breaking or Falling</h2>
+
+        <p>What is happening to the plant?</p>
+
+        <button>Stem breaking near the base</button>
+        <button>Stem breaking higher up</button>
+        <button>Plant falling over</button>
+        <button>Stem bending or becoming weak</button>
+        <button>Not sure</button>
+    `;
+
+   });
+});
+
+        document.getElementById("maizeWholePlantBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Whole Plant</h2>
+
+        <p>What is the main problem with the whole plant?</p>
+
+        <button id="maizeWholeWiltBtn">Wilting</button>
+        <button id="maizeWholeStuntedBtn">Stunted growth</button>
+        <button id="maizeWholeYellowBtn">Overall yellowing</button>
+        <button id="maizeWholeFallingBtn">Falling or collapsing</button>
+        <button id="maizeWholePoorBtn">Poor overall growth</button>
+        <button id="maizeWholeNotSureBtn">Not sure</button>
+    `; 
+document.getElementById("maizeWholeWiltBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Whole Plant Wilting</h2>
+
+        <p>How is the plant wilting?</p>
+
+        <button>Leaves drooping</button>
+        <button>Leaves drying out</button>
+        <button>Entire plant collapsing</button>
+        <button>Wilting despite enough water</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("maizeWholeStuntedBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Stunted Growth</h2>
+
+        <p>What does the stunted growth look like?</p>
+
+        <button>Plant is much shorter than expected</button>
+        <button>Leaves are smaller than normal</button>
+        <button>Growth is slow</button>
+        <button>Some plants are smaller than others</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("maizeWholeYellowBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Overall Yellowing</h2>
+
+        <p>How is the yellowing appearing on the plant?</p>
+
+        <button>Most of the leaves are yellow</button>
+        <button>Older leaves are yellowing first</button>
+        <button>Newer leaves are yellowing first</button>
+        <button>Yellowing is uneven or patchy</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("maizeWholeFallingBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Falling or Collapsing</h2>
+
+        <p>How is the plant falling or collapsing?</p>
+
+        <button>Falling over at the base</button>
+        <button>Stem bending before falling</button>
+        <button>Plant suddenly collapsing</button>
+        <button>Several plants falling together</button>
+        <button>Not sure</button>
+    `;
+
+});
+          document.getElementById("maizeWholePoorBtn").addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Poor Overall Growth</h2>
+
+        <p>What best describes the poor growth?</p>
+
+        <button>Plants are smaller than expected</button>
+        <button>Leaves are fewer than normal</button>
+        <button>Plants are growing unevenly</button>
+        <button>Growth has stopped or slowed</button>
+        <button>Not sure</button>
+    `;
+
+});
+});
+
+    document.getElementById("maizeNotSureBtn")?.addEventListener("click", function() {
+
+    appArea.innerHTML = `
+        <h2>Maize - Not Sure</h2>
+
+        <p>No problem. Let's collect a general picture of what is happening.</p>
+
+<button>Leaves look abnormal</button>
+        <button>Ear looks abnormal</button>
+        <button>Stem looks abnormal</button>
+        <button>Whole plant looks unhealthy</button>
+        <button>I'm not sure what I'm seeing</button>
+    `;
+
+});
+const cassavaLeavesBtn = document.getElementById("cassavaLeavesBtn");
+
+alert(cassavaLeavesBtn);
+
+if (cassavaLeavesBtn) {
+    cassavaLeavesBtn.addEventListener("click", function() {
+
+        appArea.innerHTML = `
+            <h2>Cassava - Leaves</h2>
+
+            <p>What problem are you seeing on the cassava leaves?</p>
+
+            <button>Spots</button>
+            <button>Yellowing or discoloration</button>
+            <button>Curling or distortion</button>
+            <button>Holes or chewing</button>
+            <button>Wilting</button>
+            <button>Not sure</button>
+        `;
+
+    });
+}
+    }
+});
